@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import ForeignKey
 
 db = SQLAlchemy()
 
@@ -8,8 +9,9 @@ class User(db.Model):
     user_name = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    favorite_planets = db.relationship('Planets', lazy=True)
+    favorite_people = db.relationship('People', lazy=True)
 
-    
 
     def __repr__(self):
         return '<User %r>' % self.id
@@ -19,7 +21,17 @@ class User(db.Model):
             "id": self.id,
             "email": self.email,
             "user_name": self.user_name,
+            "favorite_planets": [planet.serialize() for planet in self.favorite_planets],
+            "favorite_people": [people.serialize() for people in self.favorite_people]
         }
+
+    @property
+    def favorite_planets_list(self):
+        return [planet.serialize() for planet in self.favorite_planets]
+
+    @property
+    def favorite_people_list(self):
+        return [people.serialize() for people in self.favorite_people]
     
 class People(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -28,6 +40,9 @@ class People(db.Model):
     height = db.Column(db.String(120), unique=False, nullable=False)
     eye_color = db.Column(db.String(120), unique=False, nullable=False)
     home_planet = db.Column(db.String(120), unique=False, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
+
     
 
 
@@ -47,11 +62,13 @@ class People(db.Model):
 
 class Planets(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True, nullable=False)
+    name = db.Column(db.String(120), unique=False, nullable=False)
     type_of_terrain = db.Column(db.String(120), unique=False, nullable=False)
     population = db.Column(db.String(120), unique=False, nullable=False)
     diameter = db.Column(db.String(120), unique=False, nullable=False)
     climate = db.Column(db.String(120), unique=False, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
     
 
 

@@ -45,21 +45,55 @@ def get_users():
 
 @app.route('/user/<int:user_id>', methods=['GET'])
 def get_user(user_id):
-    print(user_id)
     one_user = User.query.filter_by(id=user_id).first()
-    print(one_user)
 
+    # Verifica si se solicita la información básica
+    basic_info = request.args.get('basic', False)
 
-    return jsonify(one_user.serialize()), 200
+    if basic_info and basic_info.lower() == 'true':
+        return jsonify(one_user.serialize_basic()), 200
+    else:
+        return jsonify(one_user.serialize()), 200
 
 @app.route('/user/<int:user_id>/favorites', methods=['GET'])
 def get_user_favorite(user_id):
-    print(user_id)
-    one_user = "Aqui van los favoritos del suario" + " " + str(user_id)
-    print(one_user)
+    user = User.query.get(user_id)
+
+    user_planets = user.favorite_planets
+    serialized_planets = [planet.serialize() for planet in user_planets]
+
+    user_people = user.favorite_people
+    serialized_people = [people.serialize() for people in user_people]
+
+    response_body = {
+        "favorite_people": serialized_people,
+        "favorite_planets": serialized_planets
+    }
+
+    return jsonify(response_body), 200
 
 
-    return jsonify(one_user), 200
+@app.route('/user/<int:user_id>/favorites/planet/<int:planet_id>', methods=['POST'])
+def post_user_favorite_planet(user_id, planet_id):
+    user = User.query.get(user_id)
+    planet = Planets.query.get(planet_id)
+
+    user.favorite_planets.append(planet)
+    db.session.commit()
+
+    response_body = {"msg": f"El planeta {planet.name} se agregó correctamente al usuario!"}
+    return jsonify(response_body), 200
+
+@app.route('/user/<int:user_id>/favorites/people/<int:people_id>', methods=['POST'])
+def post_user_favorite_person(user_id, people_id):
+    user = User.query.get(user_id)
+    people = People.query.get(people_id)
+
+    user.favorite_people.append(people)
+    db.session.commit()
+
+    response_body = {"msg": f"El personaje {people.name} se agregó correctamente al usuario!"}
+    return jsonify(response_body), 200
 
 @app.route('/people', methods=['GET'])
 def get_character():
@@ -70,9 +104,7 @@ def get_character():
 
 @app.route('/people/<int:people_id>', methods=['GET'])
 def get_people(people_id):
-    print(people_id)
     character = People.query.filter_by(id=people_id).first()
-    print(character)
 
     return jsonify(character.serialize()), 200
 
