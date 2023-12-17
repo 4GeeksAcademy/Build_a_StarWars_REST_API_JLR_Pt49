@@ -16,7 +16,6 @@ This template installs itself in a few seconds if you open it for free with Code
 Skip this installation steps and jump to step 2 if you decide to use any of those services.
 
 > Important: The boiplerplate is made for python 3.10 but you can change the `python_version` on the Pipfile.
-
 The following steps are automatically runned withing gitpod, if you are doing a local installation you have to do them manually:
 
 ```sh
@@ -28,7 +27,6 @@ pipenv run upgrade;
 ```
 
 > Note: Codespaces users can connect to psql by typing: `psql -h localhost -U gitpod example`
-
 ## 2) How to Start coding
 
 There is an example API working with an example database. All your application code should be written inside the `./src/` folder.
@@ -54,7 +52,6 @@ $ pipenv run upgrade  # (to update your databse with the migrations)
 1. Once you run the `pipenv run start` command your API will start running live and you can open it by clicking in the "ports" tab and then clicking "open browser".
 
 > ✋ If you are working on a coding cloud like [Codespaces](https://docs.github.com/en/codespaces/developing-in-codespaces/forwarding-ports-in-your-codespace#sharing-a-port) or [Gitpod](https://www.gitpod.io/docs/configure/workspaces/ports#configure-port-visibility) make sure that your forwared port is public.
-
 ## Publish/Deploy your website!
 
 This boilerplate it's 100% read to deploy with Render.com and Herkou in a matter of minutes. Please read the [official documentation about it](https://start.4geeksacademy.com/deploy).
@@ -64,3 +61,36 @@ This boilerplate it's 100% read to deploy with Render.com and Herkou in a matter
 This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
 
 You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+
+
+
+# Buenas Buenas!
+
+Aqui dejo algunas url para que sea mas sencillo poder probar esta api:
+
+GET 
+- Traer todos los usuarios:
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/user
+- Traer todos los Planetas:
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/planets
+- Traer todos los Personajes:
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/people
+- Traer a un planeta especifico (Tatooine):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/planets/1
+- Traer a un personaje especifico (Darth Vader):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/people/6
+- Traer los favoritos del usuario (Usuario 8):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/user/8/favorites
+
+POST 
+- Agregar un planeta (Tatooine) a un usuario (Usuario 8):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/user/8/favorites/planet/1
+- Agrega un personaje (C-3PO) a un usuario (Usuario 8):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/user/8/favorites/people/7
+
+DELETE 
+- Eliminar un planeta (Hoth) de un usuario (Usuario 8):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/user/8/favorites/planet/4
+- Eliminar un personaje (Luke Skywalker) de un usuario (Usuario 8):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/user/8/favorites/people/3
+
