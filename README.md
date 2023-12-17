@@ -61,3 +61,36 @@ This boilerplate it's 100% read to deploy with Render.com and Herkou in a matter
 This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
 
 You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+
+
+
+# Buenas Buenas!
+
+Aqui dejo algunas url para que sea mas sencillo poder probar esta api desde POSTMAN:
+
+GET 
+- Traer todos los usuarios:
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/user
+- Traer todos los Planetas:
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/planets
+- Traer todos los Personajes:
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/people
+- Traer a un planeta especifico (Tatooine):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/planets/1
+- Traer a un personaje especifico (Darth Vader):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/people/6
+- Traer los favoritos del usuario (Usuario 8):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/user/8/favorites
+
+POST 
+- Agregar un planeta (Tatooine) a un usuario (Usuario 8):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/user/8/favorites/planet/1
+- Agrega un personaje (C-3PO) a un usuario (Usuario 8):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/user/8/favorites/people/7
+
+DELETE 
+- Eliminar un planeta (Hoth) de un usuario (Usuario 8):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/user/8/favorites/planet/4
+- Eliminar un personaje (Luke Skywalker) de un usuario (Usuario 8):
+  https://musical-space-chainsaw-gg69v4jrggwhqp7-3000.app.github.dev/user/8/favorites/people/3
+
