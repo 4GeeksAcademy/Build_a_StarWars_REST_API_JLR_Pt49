@@ -66,7 +66,7 @@ You can find other templates and resources like this at the [school github page]
 
 # Buenas Buenas!
 
-Aqui dejo algunas url para que sea mas sencillo poder probar esta api desde POSTMAN:
+Aqui dejo algunas url para que sea mas sencillo poder probar esta api:
 
 GET 
 - Traer todos los usuarios:
