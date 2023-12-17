@@ -47,7 +47,6 @@ def get_users():
 def get_user(user_id):
     one_user = User.query.filter_by(id=user_id).first()
 
-    # Verifica si se solicita la información básica
     basic_info = request.args.get('basic', False)
 
     if basic_info and basic_info.lower() == 'true':
