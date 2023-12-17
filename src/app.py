@@ -123,6 +123,30 @@ def get_planet(planets_id):
 
     return jsonify(planet.serialize()), 200
 
+@app.route('/user/<int:user_id>/favorites/people/<int:people_id>', methods=['DELETE'])
+def delete_user_favorite_person(user_id, people_id):
+    user = User.query.get(user_id)
+    people = People.query.get(people_id)
+
+    user.favorite_people.remove(people)
+    db.session.commit()
+
+    response_body = {"msg": f"El personaje {people.name} se elimino correctamente del usuario!"}
+    return jsonify(response_body), 200
+
+@app.route('/user/<int:user_id>/favorites/planet/<int:planet_id>', methods=['DELETE'])
+def delete_user_favorite_planet(user_id, planet_id):
+    user = User.query.get(user_id)
+    planet = Planets.query.get(planet_id)
+
+    user.favorite_planets.remove(planet)
+    db.session.commit()
+
+    response_body = {"msg": f"El planeta {planet.name} se elimino correctamente del usuario!"}
+    return jsonify(response_body), 200
+
+
+
 
 
 
