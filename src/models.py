@@ -85,3 +85,37 @@ class Planets(db.Model):
             "climate": self.climate,
 
         }
+    
+class People_favorites(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    user_relatioship = db.relationship(User)
+    people_id = db.Column(db.Integer, db.ForeignKey("people.id"), nullable=False)
+    people_relatioship = db.relationship(People)
+
+    def __repr__(self):
+        return "{}".format(self.id)
+
+    def serialize(self):
+        return {
+            "id" :self.id,
+            "user_id": self.user_id,
+            "people_id": self.people_id
+        }
+    
+class Planet_favorites(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    user_relatioship = db.relationship(User)
+    planet_id = db.Column(db.Integer, db.ForeignKey("planet.id"), nullable=False)
+    planet_relatioship = db.relationship(People)
+
+    def __repr__(self):
+        return "{}".format(self.id)
+
+    def serialize(self):
+        return {
+            "id" :self.id,
+            "user_id": self.user_id,
+            "planet_id": self.planet_id
+        }
